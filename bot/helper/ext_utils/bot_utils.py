@@ -57,6 +57,7 @@ class MirrorStatus:
     STATUS_METADATA    = "𝙰𝚍𝚍𝚒𝚗𝚐 𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊 𝙿𝚘𝚠𝚎𝚛𝚎𝚍 𝙱𝚢 @𝙿𝙱𝚡1_𝙱𝚘𝚝𝚜"
     STATUS_CHECKING    = "𝙲𝚑𝚎𝚌𝚔𝚄𝚙"
     STATUS_SEEDING     = "𝚂𝚎𝚎𝚍𝚒𝚗𝚐"
+    STATUS_MERGE       = "𝙼𝚎𝚛𝚐𝚒𝚗𝚐 𝙿𝚘𝚠𝚎𝚛𝚍 𝙱𝚢 @𝙿𝙱𝚇1_𝙱𝙾𝚃𝚂"
 
 
 class setInterval:
