@@ -177,6 +177,9 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
 
         lmeta = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('lmeta', config_dict.get('METADATA', ''))) == '' else val
         buttons.ibutton(f"{'✅️' if lmeta != 'Nᴏᴛ Exɪsᴛs' else ''} Mᴇᴛᴀᴅᴀᴛᴀ", f"userset {user_id} lmeta")
+
+        lmerge = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('lmerge', config_dict.get('LEECH_MERGE', ''))) == '' else val
+        buttons.ibutton(f"{'✅️' if lsuffix != 'Nᴏᴛ Exɪsᴛs' else ''} Mᴇʀɢᴇ", f"userset {user_id} lmerge")       
                 
         text = BotTheme('LEECH', NAME=name, DL=f"{dailyll} / {dailytlle}",
                 LTYPE=ltype, THUMB=thumbmsg, SPLIT_SIZE=split_size,
@@ -737,6 +740,7 @@ async def send_users_settings(client, message):
     else:
         await sendMessage(message, f'{userid} have not saved anything..')
 
+        text = BotTheme('MERGE', NAME=name, 
 
 bot.add_handler(MessageHandler(send_users_settings, filters=command(
     BotCommands.UsersCommand) & CustomFilters.sudo))
