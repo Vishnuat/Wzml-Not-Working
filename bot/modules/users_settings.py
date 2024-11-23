@@ -53,6 +53,7 @@ fname_dict = {'rcc': 'RCʟᴏɴᴇ',
              'mprefix': 'Pʀᴇғɪx',
              'msuffix': 'Suffix',
              'mremname': 'Rᴇᴍɴᴀᴍᴇ',
+             'lmerge': 'Mᴇʀɢᴇ',
              'ldump': 'Usᴇʀ Dᴜᴍᴘ',
              'lcaption': 'Cᴀᴘᴛɪᴏɴ',
              'thumb': 'Tʜᴜᴍʙɴᴀɪʟ',
@@ -73,11 +74,12 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
     rclone_path = f'wcl/{user_id}.conf'
     user_dict = user_data.get(user_id, {})
     if key is None:
-        buttons.ibutton("Uɴɪᴠᴇʀsᴀʟ Sᴇᴛᴛɪɴɢs ", f"userset {user_id} universal")
-        buttons.ibutton("Mɪʀʀᴏʀ Sᴇᴛᴛɪɴɢs", f"userset {user_id} mirror")
-        buttons.ibutton("Lᴇᴇᴄʜ Sᴇᴛᴛɪɴɢs", f"userset {user_id} leech")
+        buttons.ibutton("𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗮𝗹 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} universal")
+        buttons.ibutton("𝗠𝗶𝗿𝗿𝗼𝗿 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} mirror")
+        buttons.ibutton("𝗟𝗲𝗲𝗰𝗵 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} leech")
+        buttons.ibutton("𝗠𝗲𝗿𝗴𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} merge")
         if user_dict and any(key in user_dict for key in list(fname_dict.keys())):
-            buttons.ibutton("Rᴇsᴇᴛ Sᴇᴛᴛɪɴɢs", f"userset {user_id} reset_all")
+            buttons.ibutton("𝗥𝗲𝘀𝗲𝘁 𝗔𝗹𝗹 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀", f"userset {user_id} reset_all")
         buttons.ibutton("❌", f"userset {user_id} close")
 
         text = BotTheme('USER_SETTING', NAME=name, ID=user_id, USERNAME=f'@{from_user.username}', LANG=Language.get(lc).display_name() if (lc := from_user.language_code) else "N/A", DC=from_user.dc_id)
