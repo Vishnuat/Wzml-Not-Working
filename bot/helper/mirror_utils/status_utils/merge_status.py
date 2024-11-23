@@ -5,7 +5,7 @@ from bot import LOGGER
 from bot.helper.ext_utils.bot_utils import EngineStatus, get_readable_file_size, MirrorStatus
 
 
-class MetadataStatus:
+class MergeStatus:
     def __init__(self, name, size, gid, listener):
         self.__name = name
         self.__gid = gid
@@ -33,7 +33,7 @@ class MetadataStatus:
         return '0s'
 
     def status(self):
-        return MirrorStatus.STATUS_METADATA
+        return MirrorStatus.STATUS_MERGE
 
     def processed_bytes(self):
         return 0
@@ -42,14 +42,14 @@ class MetadataStatus:
         return self
 
     async def cancel_download(self):
-        LOGGER.info(f'Cancelling metadata edit: {self.__name}')
+        LOGGER.info(f'Cancelling merge edit: {self.__name}')
         if self.__listener.suproc is not None:
             try:
                 self.__listener.suproc.kill()
             except:
                 pass
         self.__listener.suproc = 'cancelled'
-        await self.__listener.onUploadError('Metada edit stopped by user!')
+        await self.__listener.onUploadError('Merge stopped by user!')
 
 
     def eng(self):
