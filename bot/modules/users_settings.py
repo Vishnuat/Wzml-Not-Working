@@ -741,7 +741,7 @@ async def send_users_settings(client, message):
     else:
         await sendMessage(message, f'{userid} have not saved anything..')
 
-        text = BotTheme('MERGE', NAME=name, 
+        text = BotTheme('MERGE', NAME=name, LMERGE=escape(lmerge))
 
 bot.add_handler(MessageHandler(send_users_settings, filters=command(
     BotCommands.UsersCommand) & CustomFilters.sudo))
