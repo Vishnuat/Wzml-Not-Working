@@ -36,6 +36,7 @@ pyshorteners
 python-magic
 pymongo
 pyrofork==2.2.11
+pytz
 quoters
 qbittorrent-api
 requests
