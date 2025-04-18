@@ -54,7 +54,6 @@ fname_dict = {'rcc': 'RCʟᴏɴᴇ',
              'mprefix': 'Pʀᴇғɪx',
              'msuffix': 'Suffix',
              'mremname': 'Rᴇᴍɴᴀᴍᴇ',
-             'lmerge': 'Mᴇʀɢᴇ',
              'ldump': 'Usᴇʀ Dᴜᴍᴘ',
              'lcaption': 'Cᴀᴘᴛɪᴏɴ',
              'thumb': 'Tʜᴜᴍʙɴᴀɪʟ',
@@ -75,13 +74,12 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
     rclone_path = f'wcl/{user_id}.conf'
     user_dict = user_data.get(user_id, {})
     if key is None:
-        buttons.ibutton("𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗮𝗹 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} universal")
-        buttons.ibutton("𝗠𝗶𝗿𝗿𝗼𝗿 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} mirror")
-        buttons.ibutton("𝗟𝗲𝗲𝗰𝗵 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} leech")
-        buttons.ibutton("𝗠𝗲𝗿𝗴𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴", f"userset {user_id} merge")
+        buttons.ibutton("Universal Settings", f"userset {user_id} universal")
+        buttons.ibutton("Mirror Settings", f"userset {user_id} mirror")
+        buttons.ibutton("Leech Settings", f"userset {user_id} leech")
         if user_dict and any(key in user_dict for key in list(fname_dict.keys())):
-            buttons.ibutton("𝗥𝗲𝘀𝗲𝘁 𝗔𝗹𝗹 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀", f"userset {user_id} reset_all")
-        buttons.ibutton("❌", f"userset {user_id} close")
+            buttons.ibutton("Reset All Settings", f"userset {user_id} reset_all")
+        buttons.ibutton("➖", f"userset {user_id} close")
 
         text = BotTheme('USER_SETTING', NAME=name, ID=user_id, USERNAME=f'@{from_user.username}', LANG=Language.get(lc).display_name() if (lc := from_user.language_code) else "N/A", DC=from_user.dc_id)
         
@@ -178,9 +176,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
 
         lmeta = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('lmeta', config_dict.get('METADATA', ''))) == '' else val
         buttons.ibutton(f"{'✅️' if lmeta != 'Nᴏᴛ Exɪsᴛs' else ''} Mᴇᴛᴀᴅᴀᴛᴀ", f"userset {user_id} lmeta")
-
-        lmerge = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('lmerge', config_dict.get('LEECH_MERGE', ''))) == '' else val
-        buttons.ibutton(f"{'✅️' if lsuffix != 'Nᴏᴛ Exɪsᴛs' else ''} Mᴇʀɢᴇ", f"userset {user_id} lmerge")       
+       
                 
         text = BotTheme('LEECH', NAME=name, DL=f"{dailyll} / {dailytlle}",
                 LTYPE=ltype, THUMB=thumbmsg, SPLIT_SIZE=split_size,
